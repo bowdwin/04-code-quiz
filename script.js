@@ -10,175 +10,169 @@ THEN the game is over
 WHEN the game is over
 THEN I can save my initials and score */
 
-
-// start quicz
-// dialog goes away
-// 4 buttons select one
-// 3 questions when you select right one play a sound and display correct
-
-// all done
-// final score is 30 enter your initals
-// create a high scores list
-// go back
-
 var startQuizElement = document.querySelector(".start-btn");
 var timeElement = document.querySelector(".time");
 var questionContainerElement = document.querySelector(".questions");
 
+var answerElement0 = document.querySelector("#answer0");
 var answerElement1 = document.querySelector("#answer1");
 var answerElement2 = document.querySelector("#answer2");
 var answerElement3 = document.querySelector("#answer3");
-var answerElement4 = document.querySelector("#answer4");
+var finalScoreIs = document.querySelector(".finalScore")
+var submitForm = document.querySelector(".submit")
+submitForm.hidden = true;
 
 var answerElement = document.querySelector(".btn");
 
-var numberOfQuestion = 1;
+var numberOfQuestion = 0;
 var score = 0;
-
-console.log(answerElement1.textContent);
-console.log(answerElement2.textContent);
-console.log(answerElement3.textContent);
-console.log(answerElement4.textContent);
+var answerElementPicked = 0;
 
 var question1Element = document.querySelector(".question-one");
-
-// var answerElement1 = document.querySelector(".answer-one")
-// var answerElement2 = document.querySelector(".answer-two")
-// var answerElement3 = document.querySelector(".answer-three")
-// var answerElement4 = document.querySelector(".answer-four")
-
-var timer = 30;
-
+var wrongOrWriteDisplay = document.querySelector(".right-or-wrong-msg");
 
 document.querySelector(".questions").hidden = true;
+
+document.querySelector(".right-or-wrong-msg").hidden = true;
+var timer = 5;
+
+var answerarrayq = [
+    {
+        question: "How old is dex?",
+        answers: [
+            { text: "5", iscorrect: false },
+            { text: "2", iscorrect: true },
+            { text: "3", iscorrect: false },
+            { text: "1", iscorrect: false }
+        ]
+    },
+    {
+        question: "How much does he weigh?",
+        answers: [
+            { text: "22", iscorrect: false },
+            { text: "21", iscorrect: false },
+            { text: "31", iscorrect: true },
+            { text: "41", iscorrect: false }
+        ]
+    },
+    {
+        question: "what is 2 + 2",
+        answers: [
+            { text: "1", iscorrect: false },
+            { text: "2", iscorrect: false },
+            { text: "3", iscorrect: false },
+            { text: "4", iscorrect: true }
+        ]
+    },
+    {
+        question: "what is 3 + 3",
+        answers: [
+            { text: "22", iscorrect: false },
+            { text: "21", iscorrect: false },
+            { text: "31", iscorrect: true },
+            { text: "41", iscorrect: false }
+        ]
+    },
+    {
+        question: "How much does he weigh?",
+        answers: [
+            { text: "22", iscorrect: false },
+            { text: "21", iscorrect: false },
+            { text: "31", iscorrect: true },
+            { text: "41", iscorrect: false }
+        ]
+    },
+]
+
+console.log(answerarrayq);
+// console.log(answerarrayq1.answers[1]);
+console.log(answerarrayq[0].answers[0].text)
+console.log(answerarrayq[0].answers[0].iscorrect)
+// console.log(answerarrayq.numberOfQuestion.answers.length);
+
+
 
 
 startQuizElement.addEventListener("click", function () {
     document.querySelector(".start-btn").hidden = true;
     document.querySelector(".questions").hidden = false;
     document.querySelector(".title").hidden = true;
-    // questionContainerElement.classList.remove('hide')
-    // questionContainerElement.classList.remove('hide')
 
     // startQuiz();
     time();
-    var whichNumberOfQuestion = question1();
-    console.log(whichNumberOfQuestion);
-    return whichNumberOfQuestion
+    var numberOfQuestion = question();
+    console.log(numberOfQuestion + "number of quest");
+    // return whichNumberOfQuestion
+
+});
+
+function question() {
+
+    setTimeout(function () {
+        document.querySelector(".right-or-wrong-msg").hidden = true;
+    }, 2000);
+    // document.querySelector(".right-or-wrong-msg").hidden = true;
+    console.log(numberOfQuestion + "number of question");
+    console.log(answerarrayq[numberOfQuestion].question);
+    question1Element.textContent = answerarrayq[numberOfQuestion].question;
+    //need to add a loop for array here
+    answerElement0.textContent = answerarrayq[numberOfQuestion].answers[0].text;
+    answerElement1.textContent = answerarrayq[numberOfQuestion].answers[1].text;
+    answerElement2.textContent = answerarrayq[numberOfQuestion].answers[2].text;
+    answerElement3.textContent = answerarrayq[numberOfQuestion].answers[3].text;
+    // return [numberOfQuestion(), answerarrayq1.iscorrect()];
+
+    return numberOfQuestion;
+}
+
+
+// console.log(HTMLElementObject.click());
+answerElement0.addEventListener("click", function () {
+    answerElementPicked = 0;
+    checkIfTrue();
+    question();
 
 });
 
 answerElement1.addEventListener("click", function () {
-    console.log(event);
-    console.log(numberOfQuestion);
-    var questionRightOrWrong = checkWhichQuestion(numberOfQuestion, answerElement1.textContent);
-    console.log(questionRightOrWrong);
-    if (questionRightOrWrong === true) {
-        score++
-        console.log(score);
-        numberOfQuestion++;
-        question2(numberOfQuestion);
-        console.log(score + " score is");
-    }
-    else {
-        score--;
-        console.log(score);
-        numberOfQuestion++;
-        question2(numberOfQuestion);
-        console.log(score + " score is");
-    }
+    answerElementPicked = 1;
+    checkIfTrue();
+    question();
 
 });
 
 answerElement2.addEventListener("click", function () {
-    console.log(event);
-    console.log(numberOfQuestion);
-    var questionRightOrWrong = checkWhichQuestion(numberOfQuestion, answerElement2.textContent);
-    console.log(questionRightOrWrong);
-    if (questionRightOrWrong === true) {
-        alert("true");
-        score++
-        console.log(score);
-        numberOfQuestion++;
-        question2(numberOfQuestion);
-        console.log(score + " score is");
-    }
-    else {
-        alert("false");
-        score--;
-        console.log(score);
-        numberOfQuestion++;
-        question2(numberOfQuestion);
-        console.log(score + " score is");
-    }
+    answerElementPicked = 2;
+    checkIfTrue();
+    question();
 
 });
 
-// answerElement3.addEventListener("click", function () {
-//     console.log(event);
-//     console.log(numberOfQuestion);
-//     checkWhichQuestion(numberOfQuestion);
-// });
+answerElement3.addEventListener("click", function () {
+    answerElementPicked = 3;
+    checkIfTrue();
+    question();
 
-// answerElement4.addEventListener("click", function () {
-//     console.log(event);
-//     console.log(numberOfQuestion);
-//     checkWhichQuestion(numberOfQuestion);
-// });
-
-
-// answerElement.addEventListener("click", function (event) {
-//     event.preventDefault();
-//     console.log(event);
-// })
-
-//starts the quiz
-// function startQuiz() {
-
-//     time();
-//     question1();
-
-// }
-
-//display question 1
-function question1() {
-    var questionOne = "how old is Dex?";
-    question1Element.textContent = questionOne;
-    var answerarrayq1 = [
-        { text: "5", iscorrect: false },
-        { text: "2", iscorrect: true },
-        { text: "3", iscorrect: false },
-        { text: "1", iscorrect: false }
-    ]
-
-    answerElement1.textContent = answerarrayq1[0].text;
-    answerElement2.textContent = answerarrayq1[1].text;
-    answerElement3.textContent = answerarrayq1[2].text;
-    answerElement4.textContent = answerarrayq1[3].text;
-    numberOfQuestion = 1;
-
-    // return [numberOfQuestion(), answerarrayq1.iscorrect()];
-    return numberOfQuestion;
-}
-
-function question2(a) {
-    var questionOne = "How many lb's does he weigh";
-    question1Element.textContent = questionOne;
-    var answerarrayq1 = [
-        { text: "22", iscorrect: false },
-        { text: "25", iscorrect: false },
-        { text: "28", iscorrect: true },
-        { text: "33", iscorrect: false }
-    ]
-
-    answerElement1.textContent = answerarrayq1[0].text;
-    answerElement2.textContent = answerarrayq1[1].text;
-    answerElement3.textContent = answerarrayq1[2].text;
-    answerElement4.textContent = answerarrayq1[3].text;
-    numberOfQuestion = 2;
-
-    // return [numberOfQuestion(), answerarrayq1.iscorrect()];
-    return numberOfQuestion;
+});
+function checkIfTrue() {
+    console.log(answerarrayq[numberOfQuestion].answers[answerElementPicked].iscorrect);
+    if (answerarrayq[numberOfQuestion].answers[answerElementPicked].iscorrect === true) {
+        score++
+        console.log(score);
+        numberOfQuestion++;
+        console.log(score + " score is");
+        wrongOrWriteDisplay.textContent = "Correct!!"
+        document.querySelector(".right-or-wrong-msg").hidden = false;
+    }
+    else {
+        score--;
+        console.log(score);
+        numberOfQuestion++;
+        console.log(score + " score is");
+        wrongOrWriteDisplay.textContent = "Wrong!!";
+        document.querySelector(".right-or-wrong-msg").hidden = false;
+        timer -= 10;
+    }
 }
 
 
@@ -186,9 +180,9 @@ function time() {
     var timerInterval = setInterval(function () {
         timer--;
         timeElement.textContent = timer;
-        if (timer === 0) {
+        if (timer <= 0) {
             clearInterval(timerInterval);
-            // sendMessage();
+            gameOver();
             // alert("time is up");
         }
 
@@ -196,43 +190,14 @@ function time() {
 }
 
 
-// var questions = [
-//     {
-//         question: "how old is dex?"
-//         answer: [
-//             { text: "5", iscorrect: false },
-//             { text: "2", iscorrect: true },
-//             { text: "3" iscorrect: false },
-//             { text: "1" iscorrect: false }
-//         ]
-//     }
-// ]
-
-
-function checkWhichQuestion(a, b) {
-    console.log(a, b);
-    var numberOfQuestion = a;
-    // console.log(answerElement1.textContent + " El 1");
-    // console.log(answerElement2.textContent + " El 1");
-    // console.log(answerElement3.textContent + " El 1");
-    // console.log(answerElement4.textContent + " El 1");
-    if (a == 1 && b == 2) {
-        console.log(answerElement2.textContent + " This is the value of answerElement2.textConect");
-        console.log(a + " This is the value of a");
-        console.log(typeof a);
-        console.log(typeof answerElement2.textContent);
-        alert("you are right");
-        return true;
+function gameOver() {
+    timeElement.textContent = "";
+    questionContainerElement.hidden = true;
+    question1Element.textContent = "Game Over";
+    if (score < 0) {
+        score === 0;
     }
-    else {
-        console.log(answerElement1.textContent + " This is the value of answerElement2.textConect");
-        alert("you are wrong");
-        return false;
-    }
+    finalScoreIs.textContent = "Your final score is " + score;
+    submitForm.hidden = false;
 
 }
-// function checkAnswer() {
-//     if {
-//     }
-//     else
-// }
