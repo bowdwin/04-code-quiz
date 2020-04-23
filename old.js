@@ -10,6 +10,37 @@ THEN the game is over
 WHEN the game is over
 THEN I can save my initials and score */
 
+// for (var i = 0; i < 0; i++);
+
+
+// var scores = JSON.parse(localStorage.getItem("item"));
+
+// console.log(scores, " this is the user after parse");
+//create object to store name and pw
+
+
+
+
+
+// var name = nameEl.value;
+// var li = document.createElement("li");
+// li.id = people.length;
+// li.innerHTML = name + " <button>edit</button>";
+// peopleListEl.append(li);
+
+// console.log(scores);
+
+// ...
+// var tempScore = [];
+// for (var index = 0; index < tempScore.length; index++) {
+//     if (data[index].Status == "Valid") {
+//         tempData.push(data);
+//     }
+// }
+// data = tempData;
+
+
+
 var startQuizElement = document.querySelector(".start-btn");
 var timeElement = document.querySelector(".time");
 var questionContainerElement = document.querySelector(".questions");
@@ -40,6 +71,10 @@ document.querySelector(".questions").hidden = true;
 
 document.querySelector(".right-or-wrong-msg").hidden = true;
 var timer = 5;
+
+// var personObj = new personHighScoreObj("user", "score");
+// console.log(personObj + " this is person object");
+
 
 var answerarrayq = [
     {
@@ -90,7 +125,8 @@ var answerarrayq = [
 ]
 
 
-var highScore = new Object()
+// var highScore = new Object(name, score);
+// console.log(highScore + " high score object")
 
 console.log(answerarrayq);
 // console.log(answerarrayq1.answers[1]);
@@ -181,7 +217,6 @@ function checkIfTrue() {
         document.querySelector(".right-or-wrong-msg").hidden = false;
     }
     else {
-        score--;
         console.log(score);
         numberOfQuestion++;
         console.log(score + " score is");
@@ -210,9 +245,9 @@ function gameOver() {
     timeElement.textContent = "";
     questionContainerElement.hidden = true;
     question1Element.textContent = "Game Over";
-    if (score < 0) {
-        score = 0;
-    }
+    // if (score < 0) {
+    //     score = 0;
+    // }
     finalScoreIs.textContent = "Your final score is " + score;
     submitForm.hidden = false;
 
@@ -232,36 +267,58 @@ function highScores() {
 function saveHighScores() {
 
     var names = document.querySelector("#enterName");
-    console.log(names.value);
+
+
+    scores.push({ name: names.value, score: score });
+
+    console.log(scores);
+    // var highScoreNames = {
+    //     name: names.value,
+    //     finalScore: score.value,
+    // };
+    // console.log(highScores.finalScore);
+    // console.log(highScoreNames.name + " this is high score names log in high score func");
     // var personObj = new personHighScoreObj(names, score);
-    console.log(personObj);
-    localStorage.setItem("name", JSON.stringify(names.value));
+    // console.log(personObj + " This is person obj in high score");
+    // localStorage.setItem("name", JSON.stringify(names.value))=ok
+    var scoresStringed = JSON.stringify(scores);
+    // console.log(scoresStringed + " scores stringified");
+    localStorage.setItem("item", scoresStringed);
+    // var user = JSON.parse(localStorage.getItem("item"));
+    // console.log(user, " this is the user after parse");
+    // localStorage.setItem(JSON.stringify(scores));
+    displayHighScoresOutput();
 
 }
 
 function displayHighScoresOutput() {
     var highScoresPage = document.querySelector(".displayParaHighScore");
 
-    var user = JSON.parse(localStorage.getItem("name"));
+    console.log(scores);
+    scores.sort(function (b, a) {
+        return a.score - b.score
+    })
 
-    highScoresPage.textContent = user;
-    console.log(user + " this is the user entered and pulled");
+    console.log(scores);
+    for (var i = 0; i < scores.length; i++) {
+        // answerElement0.textContent = answerarrayq[numberOfQuestion].answers[0].text;
+        var locname = scores[i].name;
+        console.log(locname);
+        var locscore = scores[i].score;
+        console.log(locscore);
+        console.log(locname + " Score: " + locscore);
+
+        var p2 = ("<p>" + locname + "Score: " + locscore + "</p>");
+        document.querySelector(".displayParaHighScore").insertAdjacentHTML('beforebegin', p2);
+
+    }
+
+    // highScoresPage.textContent = user;
+    // console.log(user + " this is the user entered and pulled");
 
 }
 
 function clearHighScores() {
-    sessionStorage.clear();
+    localStorage.clear();
     location.reload();
 }
-
-// function personHighScoreObj(user, score) {
-//     this.user = user;
-//     console.log(this.user);
-//     this.score = score;
-//     console.log(this.score);
-//     return user, score;
-
-// }
-
-// var personObj = new personHighScoreObj("user", "score");
-// console.log(personObj);
