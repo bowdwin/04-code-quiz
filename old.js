@@ -181,6 +181,7 @@ function checkIfTrue() {
         document.querySelector(".right-or-wrong-msg").hidden = false;
     }
     else {
+        score--;
         console.log(score);
         numberOfQuestion++;
         console.log(score + " score is");
@@ -209,9 +210,9 @@ function gameOver() {
     timeElement.textContent = "";
     questionContainerElement.hidden = true;
     question1Element.textContent = "Game Over";
-    // if (score < 0) {
-    //     score = 0;
-    // }
+    if (score < 0) {
+        score = 0;
+    }
     finalScoreIs.textContent = "Your final score is " + score;
     submitForm.hidden = false;
 
@@ -232,14 +233,8 @@ function saveHighScores() {
 
     var names = document.querySelector("#enterName");
     console.log(names.value);
-    var highScoreNames = {
-        name: names.value,
-        finalScore: score.value,
-    };
-    console.log(highScores.finalScore);
-    console.log(highScoreNames.name + " this is high score names log in high score func");
     // var personObj = new personHighScoreObj(names, score);
-    console.log(personObj + " This is person obj in high score");
+    console.log(personObj);
     localStorage.setItem("name", JSON.stringify(names.value));
 
 }
@@ -259,14 +254,14 @@ function clearHighScores() {
     location.reload();
 }
 
-function personHighScoreObj(user, score) {
-    this.user = user;
-    console.log(this.user);
-    this.score = score;
-    console.log(this.score);
-    return user, score;
+// function personHighScoreObj(user, score) {
+//     this.user = user;
+//     console.log(this.user);
+//     this.score = score;
+//     console.log(this.score);
+//     return user, score;
 
-}
+// }
 
-var personObj = new personHighScoreObj("user", "score");
-console.log(personObj);
+// var personObj = new personHighScoreObj("user", "score");
+// console.log(personObj);

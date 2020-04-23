@@ -18,7 +18,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-sm-12 mx-auto justify-content-center">
-                    <div class="content">
+                    <div class="content original">
                         <div class="title">
                             <h1>Title of quiz</h1>
                             <P>this is a quiz Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De
@@ -36,21 +36,30 @@
                             <button type="button" class="btn btn-dark btn" id="answer2">Answer 3</button>
                             <button type="button" class="btn btn-dark btn" id="answer3">Answer 4</button>
                         </div>
-                        <h2 class="right-or-wrong-msg" class="wrong">test</h2>
+                        <h2 class="right-or-wrong-msg" class="wrong"></h2>
                         <p class="finalScore" id="gameover-p"></p>
                         <form class="form-inline submit">
                             <div class="form-group mb-2">
                                 <label for="staticEmail2" class="sr-only">Email</label>
                                 <input type="text" readonly class="form-control-plaintext" id="staticEmail2"
-                                    value="email@example.com">
+                                    value="Enter your name:">
                             </div>
                             <div class="form-group mx-sm-3 mb-2">
-                                <label for="inputPassword2" class="sr-only">Password</label>
-                                <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+                                <label for="enterName" class="sr-only">name</label>
+                                <input type="text" class="form-control" id="enterName" placeholder="Name">
                             </div>
-                            <button type="submit" class="btn btn-primary mb-2">Confirm identity</button>
+                            <button type="button" class="btn btn-primary mb-2" id="submitHighScrBtn">Submit</button>
                         </form>
                     </div>
+                    <section class="content" id="highscores">
+                        <h4>HighScores</h4>
+                        <p class="displayParaHighScore">dispay</p>
+                        <!-- <p>display</p> -->
+                        <a href="./index.html"><button type="button" class="btn btn-primary mb-2" id="goBack">Go
+                                Back</button></a>
+                        <button type="button" class="btn btn-primary mb-2" id="clearHighScores">Clear
+                            HighScores</button>
+                    </section>
                 </div>
             </div>
             <!-- <div class="row">
