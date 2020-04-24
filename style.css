@@ -1,4 +1,37 @@
+@font-face {
+  font-family: "got-font";
+  src: url(./fonts/GameofThrones.ttf);
+}
 
+.bg {
+  background-image: url("./images/got.jpg"); /* The image used */
+  background-size: cover !important;
+  min-height: 100vh; 
+  background-size:contain;
+  background-position:center;
+  background-repeat:no-repeat;
+}
 .hide {
     display: none;
   }
+  
+.body {
+  color: white;
+  /* font-family: got-font; */
+  word-spacing: 7px;
+}
+
+.dark-box {
+ border: solid white 3px;
+ background-color: rgb(20, 30, 46);
+ padding: 20px;
+}
+
+
+.question-font {
+  font-size: medium;
+}
+
+.question-style {
+  padding: 6px;
+}

@@ -1,41 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<div class="bg">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" href="style.css">
-    </head>
 
-    <body>
-        <nav class="navbar navbar-dark bg-dark">
-            <a class="navbar-brand" href="#"></a>
-        </nav>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="body">
+    <div class="bg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-sm-12 mx-auto justify-content-center">
-                    <div class="content original">
-                        <div class="title">
-                            <h1>Title of quiz</h1>
-                            <P>this is a quiz Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De
-                                carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De
-                                apocalypsi gorger omero undead survivor dictum.</P>
-                            <button type="button" id="start-btn" class="start-btn">Start</button>
+                    <img src="./images/gotlogo.png" alt="JP">
+                    <div class="content original dark-box">
+                        <div class="title ">
+                            <h2>Quiz</h2>
+                            <P>How well do you know GOT?</p>
+                            <p> this 60 seconds 6 question quiz to find out!</p>
+                            <P>10 seconds will be deducted for each question wrong.</p>
+                            <p>If the time runs
+                                out or questions end, the game ends. </P>
+                            <button type="button" id="start-btn" class="btn btn-primary mb-2">Start</button>
+                            <button type="button" class="btn btn-primary mb-2" id="viewHighScoresbtn">View High
+                                Scores</button>
                         </div>
+                        <h5 class="question-one"></h5>
+                        <div class="questions question-font">
+                            <br>
+                            <div>
+                                <button type="button" class="btn btn-dark btn" id="answer0">Answer
+                                    1</button></div>
+                            <br>
+                            <div>
+                                <button type="button" class="btn btn-dark btn" id="answer1">Answer 2</button>
+                            </div>
 
-                        <h2 class="time"></h2>
+                            <br>
+                            <div>
+                                <button type="button" class="btn btn-dark btn" id="answer2">Answer 3</button>
+                            </div>
 
-                        <h2 class="question-one"></h2>
-                        <div class="questions">
-                            <button type="button" class="btn btn-dark btn" id="answer0">Answer 1</button>
-                            <button type="button" class="btn btn-dark btn" id="answer1">Answer 2</button>
-                            <button type="button" class="btn btn-dark btn" id="answer2">Answer 3</button>
-                            <button type="button" class="btn btn-dark btn" id="answer3">Answer 4</button>
+                            <br>
+                            <div>
+                                <button type="button" class="btn btn-dark btn" id="answer3">Answer 4</button>
+                            </div>
+
+                            <br>
                         </div>
+                        <h2 class="time "></h2>
                         <h2 class="right-or-wrong-msg" class="wrong"></h2>
                         <p class="finalScore" id="gameover-p"></p>
                         <form class="form-inline submit">
@@ -51,14 +68,17 @@
                             <button type="button" class="btn btn-primary mb-2" id="submitHighScrBtn">Submit</button>
                         </form>
                     </div>
-                    <section class="content" id="highscores">
-                        <h4>HighScores</h4>
-                        <p class="displayParaHighScore"></p>
+                    <section class="content dark-box" id="highscores">
+                        <h4>High Scores</h4>
+                        <div class="hideScorePara">
+                            <p class="displayParaHighScore"></p>
+                        </div>
+
                         <!-- <p>display</p> -->
-                        <a href="./index.html"><button type="button" class="btn btn-primary mb-2" id="goBack">Go
-                                Back</button></a>
-                        <button type="button" class="btn btn-primary mb-2" id="clearHighScores">Clear
-                            HighScores</button>
+                        <a href="./index.html"><button type="button" class="btn btn-primary mb-2" id="goBack">Start
+                                Over</button></a>
+                        <button type="button" class="btn btn-primary mb-2" id="clearHighScoresbtn">Clear
+                            HighScores and start over</button>
                     </section>
                 </div>
             </div>
@@ -67,17 +87,18 @@
                 </div>
             </div> -->
         </div>
-        <script src="script.js"></script>
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-            crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-            crossorigin="anonymous"></script>
-</div>
+    </div>
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    </div>
 </body>
 </div>
 
