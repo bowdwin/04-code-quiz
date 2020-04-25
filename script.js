@@ -45,7 +45,7 @@ var answerarrayq = [
         ]
     },
     {
-        question: "What is the name of arya's direwolf",
+        question: "What is the name of arya's direwolf?",
         answers: [
             { text: "grey Wind", iscorrect: false },
             { text: "nightFall", iscorrect: false },
@@ -54,7 +54,7 @@ var answerarrayq = [
         ]
     },
     {
-        question: "What is ser davos's nickname? ",
+        question: "What is ser davos's nickname?",
         answers: [
             { text: "the Onion knight", iscorrect: true },
             { text: "blAckfish", iscorrect: false },
@@ -72,7 +72,7 @@ var answerarrayq = [
         ]
     },
     {
-        question: "Wilfire is incredibly explosive, what substance can extinguish it?",
+        question: "What substance can extinguish it?",
         answers: [
             { text: "snOw", iscorrect: false },
             { text: "sand", iscorrect: true },
@@ -81,21 +81,21 @@ var answerarrayq = [
         ]
     },
     {
-        question: "What two substances can kill white walkers?",
+        question: "What was the name of Jon Snows Sword?",
         answers: [
-            { text: "dragon breath and Wwldfire", iscorrect: false },
-            { text: "valyrian steel and dragonglass", iscorrect: true },
-            { text: "valyrian steel and dragon breath", iscorrect: false },
-            { text: "wildfire and dragonglass", iscorrect: false }
+            { text: "Oathkeeper", iscorrect: false },
+            { text: "lightBringer", iscorrect: false },
+            { text: "heartsBane", iscorrect: false },
+            { text: "longClaw", iscorrect: true }
         ]
     },
     {
-        question: "Who created the nightking",
+        question: "Who created the nightking?",
         answers: [
-            { text: "The Wildings", iscorrect: false },
-            { text: "The Children of the Forest", iscorrect: true },
-            { text: "The Mad King", iscorrect: false },
-            { text: "The Red lady", iscorrect: false }
+            { text: "the Wildings", iscorrect: false },
+            { text: "the Children of the forest", iscorrect: true },
+            { text: "the Mad king", iscorrect: false },
+            { text: "the red Lady", iscorrect: false }
         ]
     },
 ]
@@ -182,7 +182,7 @@ function checkIfTrue() {
         console.log(score);
         numberOfQuestion++;
         wrongOrWriteDisplay.style.color = "Green";
-        wrongOrWriteDisplay.textContent = "Enemy Damaged"
+        wrongOrWriteDisplay.textContent = "Enemy DamagEd"
         document.querySelector(".right-or-wrong-msg").hidden = false;
     }
     else {
@@ -190,7 +190,7 @@ function checkIfTrue() {
         console.log(score);
         numberOfQuestion++;
         wrongOrWriteDisplay.style.color = "Red";
-        wrongOrWriteDisplay.textContent = "Wounded - 10 sec!!";
+        wrongOrWriteDisplay.textContent = "WoundEd - 10 sEc!!";
         document.querySelector(".right-or-wrong-msg").hidden = false;
 
         timer -= 10;
