@@ -19,35 +19,36 @@
                     <img src="./images/gotlogo.png" alt="JP">
                     <div class="content original dark-box">
                         <div class="title ">
-                            <h2>Quiz</h2>
-                            <P>How well do you know GOT?</p>
-                            <p> this 60 seconds 6 question quiz to find out!</p>
-                            <P>10 seconds will be deducted for each question wrong.</p>
-                            <p>If the time runs
-                                out or questions end, the game ends. </P>
-                            <button type="button" id="start-btn" class="btn btn-primary mb-2">Start</button>
-                            <button type="button" class="btn btn-primary mb-2" id="viewHighScoresbtn">View High
-                                Scores</button>
+                            <h3>Can you win at the GOT?</h2>
+                                <br>
+                                <p> You have 60 seconds to answer 7 questions</p>
+                                <P>Every wrong answer will wound you deducting 10 seconds off the timer</p>
+                                <p>If the timer runs out before answering all the questions, you DIE! GOOD LUCK! </P>
+                                <button type="button" id="start-btn" onclick="playGotTheme()"
+                                    class="btn btn-primary mb-2">Start</button>
+                                <audio id="audio" src="./sound/GOT_Theme.mp3.mp3"></audio>
+                                <button type="button" class="btn btn-primary mb-2" id="viewHighScoresbtn">View High
+                                    Scores</button>
                         </div>
                         <h5 class="question-one"></h5>
                         <div class="questions question-font">
                             <br>
                             <div>
-                                <button type="button" class="btn btn-dark btn" id="answer0">Answer
+                                <button type="button" class="btn btn-secondary" id="answer0">Answer
                                     1</button></div>
                             <br>
                             <div>
-                                <button type="button" class="btn btn-dark btn" id="answer1">Answer 2</button>
+                                <button type="button" class="btn btn-secondary" id="answer1">Answer 2</button>
                             </div>
 
                             <br>
                             <div>
-                                <button type="button" class="btn btn-dark btn" id="answer2">Answer 3</button>
+                                <button type="button" class="btn btn-secondary" id="answer2">Answer 3</button>
                             </div>
 
                             <br>
                             <div>
-                                <button type="button" class="btn btn-dark btn" id="answer3">Answer 4</button>
+                                <button type="button" class="btn btn-secondary" id="answer3">Answer 4</button>
                             </div>
 
                             <br>
@@ -56,29 +57,36 @@
                         <h2 class="right-or-wrong-msg" class="wrong"></h2>
                         <p class="finalScore" id="gameover-p"></p>
                         <form class="form-inline submit">
-                            <div class="form-group mb-2">
-                                <label for="staticEmail2" class="sr-only">Email</label>
-                                <input type="text" readonly class="form-control-plaintext" id="staticEmail2"
-                                    value="Enter your name:">
+                            <div class="form-group mb-2 body">
+                                <label for="staticEmail2 body" class="sr-only">Email</label>
+                                <!-- <input type="text" readonly class="form-control" id="staticEmail2"
+                                    value="Enter your name:"> -->
                             </div>
-                            <div class="form-group mx-sm-3 mb-2">
-                                <label for="enterName" class="sr-only">name</label>
-                                <input type="text" class="form-control" id="enterName" placeholder="Name">
+                            <div class="form-group mx-sm-3 mb-2 body">
+                                <label for="enterName" class="sr-only">enter name to submit score</label>
+                                <input type="text" class="form-control" id="enterName" placeholder="Enter Name">
                             </div>
-                            <button type="button" class="btn btn-primary mb-2" id="submitHighScrBtn">Submit</button>
+                            <button type="button" style="margin-left: 12px" class="btn btn-secondary mb-2"
+                                id="submitHighScrBtn">Submit</button>
                         </form>
                     </div>
                     <section class="content dark-box" id="highscores">
-                        <h4>High Scores</h4>
+                        <h3>High Scores</h3>
                         <div class="hideScorePara">
                             <p class="displayParaHighScore"></p>
                         </div>
 
                         <!-- <p>display</p> -->
-                        <a href="./index.html"><button type="button" class="btn btn-primary mb-2" id="goBack">Start
-                                Over</button></a>
-                        <button type="button" class="btn btn-primary mb-2" id="clearHighScoresbtn">Clear
-                            HighScores and start over</button>
+                        <div>
+                            <a href="./index.html"><button type="button" class="btn btn-primary mb-2" id="goBack">Start
+                                    Over</button></a>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-primary mb-2 add-word-spacing"
+                                id="clearHighScoresbtn">Clear
+                                HighScores and start over</button>
+                        </div>
+
                     </section>
                 </div>
             </div>

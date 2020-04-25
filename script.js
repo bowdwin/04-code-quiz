@@ -4,11 +4,6 @@ if (scores === null) {
     ]
 }
 
-console.log(scores + " beg output of scores");
-
-
-console.log(scores, " this is the user after parse");
-
 var startQuizElement = document.querySelector("#start-btn");
 var timeElement = document.querySelector(".time");
 var questionContainerElement = document.querySelector(".questions");
@@ -35,7 +30,7 @@ highScoresPage.hidden = true;
 submitForm.hidden = true;
 document.querySelector(".questions").hidden = true;
 document.querySelector(".right-or-wrong-msg").hidden = true;
-var timer = 90;
+var timer = 60;
 // var personObj = new personHighScoreObj("user", "score");
 // console.log(personObj + " this is person object");
 var answerarrayq = [
@@ -113,6 +108,7 @@ var answerarrayqLength = answerarrayq.length;
 // console.log(answerarrayq[0].answers[0].iscorrect)
 // console.log(answerarrayq.numberOfQuestion.answers.length);
 startQuizElement.addEventListener("click", function () {
+    beginQuiz();
     highScoresPage.hidden = true;
     document.querySelector("#start-btn").hidden = true;
     document.querySelector(".questions").hidden = false;
@@ -129,7 +125,7 @@ function question() {
     setTimeout(function () {
         document.querySelector(".right-or-wrong-msg").hidden = true;
     }, 2000);
-    // document.querySelector(".right-or-wrong-msg").hidden = true;
+
     console.log(numberOfQuestion + "number of question");
     console.log(answerarrayq[numberOfQuestion].question);
     question1Element.textContent = answerarrayq[numberOfQuestion].question;
@@ -180,18 +176,20 @@ viewHighScoresbtn.addEventListener("click", function () {
 function checkIfTrue() {
     console.log(answerarrayq[numberOfQuestion].answers[answerElementPicked].iscorrect);
     if (answerarrayq[numberOfQuestion].answers[answerElementPicked].iscorrect === true) {
+        drumSuccessSound();
         score++
         console.log(score);
         numberOfQuestion++;
         console.log(score + " score is");
-        wrongOrWriteDisplay.textContent = "Correct!!"
+        wrongOrWriteDisplay.textContent = "Enemy Damaged"
         document.querySelector(".right-or-wrong-msg").hidden = false;
     }
     else {
+        stabWoundSound();
         console.log(score);
         numberOfQuestion++;
         console.log(score + " score is");
-        wrongOrWriteDisplay.textContent = "Wrong!!";
+        wrongOrWriteDisplay.textContent = "Wounded - 10 sec!!";
         document.querySelector(".right-or-wrong-msg").hidden = false;
         timer -= 10;
     }
@@ -254,11 +252,11 @@ function displayHighScoresOutput() {
         var locscore = scores[i].score;
         console.log(locscore);
         console.log(locname + " Score: " + locscore);
-        var p2 = ("<p>" + locname + " Score: " + locscore + "</p>");
+        var p2 = ("<p>" + " Score: " + locscore + " " + locname + "</p>");
         document.querySelector(".displayParaHighScore").insertAdjacentHTML('beforebegin', p2);
     }
     gobackbt.hidden = false;
-    // highScoresPage.textContent = user;
+    // highScoresPage.textContent = user;å
     // console.log(user + " this is the user entered and pulled");
 }
 function clearHighScores() {
@@ -271,3 +269,26 @@ function showHighScore() {
     highScoresPage.hidden = false;
     gobackbt.hidden = true;
 }
+
+function playGotTheme() {
+    var audio = document.getElementById("audio");
+    audio.volume = 0.05;
+    audio.play();
+}
+
+function stabWoundSound() {
+    var stabwoundaudio = new Audio("sound/stab.mp3");
+    stabwoundaudio.volume = .2;
+    stabwoundaudio.play();
+}
+function drumSuccessSound() {
+    var drumSuccessAudio = new Audio("sound/drumbs.mp3");
+    drumSuccessAudio.volume = .2;
+    drumSuccessAudio.play();
+}
+function beginQuiz() {
+    var beingSound = new Audio("sound/isthisyourcommand.mp3");
+    beingSound.volume = .2;
+    beingSound.play();
+}
+
