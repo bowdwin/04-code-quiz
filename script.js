@@ -276,23 +276,23 @@ function showHighScore() {
 
 function playGotTheme() {
     var audio = document.getElementById("audio");
-    audio.volume = 0.05;
+    // audio.volume = 0.05;
     audio.play();
 }
 
 function stabWoundSound() {
     var stabwoundaudio = new Audio("sound/stab.mp3");
-    stabwoundaudio.volume = .5;
+    stabwoundaudio.volume = .4;
     stabwoundaudio.play();
 }
 function drumSuccessSound() {
     var drumSuccessAudio = new Audio("sound/kingofnorth.mp3");
-    drumSuccessAudio.volume = .5;
+    drumSuccessAudio.volume = .4;
     drumSuccessAudio.play();
 }
 function beginQuiz() {
     var beingSound = new Audio("sound/isthisyourcommand.mp3");
-    beingSound.volume = .5;
+    beingSound.volume = .4;
     beingSound.play();
 }
 
@@ -303,7 +303,7 @@ function stopThemeSOng() {
 
 function endSong() {
     var endSong = new Audio("sound/nightking.mp3");
-    endSong.volume = .5;
+    // endSong.volume = .5;
     endSong.play();
 }
 
