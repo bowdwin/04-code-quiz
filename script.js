@@ -21,6 +21,7 @@ var hideScorePara = document.querySelector(".hideScorePara");
 var viewHighScoresbtn = document.querySelector("#viewHighScoresbtn");
 var gobackbt = document.querySelector("#goBack");
 var answerElement = document.querySelector(".btn");
+
 var numberOfQuestion = 0;
 var score = 0;
 var answerElementPicked = 0;
@@ -35,12 +36,12 @@ var timer = 60;
 // console.log(personObj + " this is person object");
 var answerarrayq = [
     {
-        question: "Ned stark had a sister who was abducted by the mad king. what was her name?",
+        question: "Ned Stark had a sister who was abducted by the mad king. what was her name?",
         answers: [
             { text: "Lysa", iscorrect: false },
-            { text: "Lorena", iscorrect: false },
-            { text: "Leanna", iscorrect: false },
-            { text: "Lyanna", iscorrect: true }
+            { text: "lOrena", iscorrect: false },
+            { text: "leanNa", iscorrect: false },
+            { text: "lyAnna", iscorrect: true }
         ]
     },
     {
@@ -98,8 +99,8 @@ var answerarrayq = [
         ]
     },
 ]
-
 var answerarrayqLength = answerarrayq.length;
+
 // var highScore = new Object(name, score);
 // console.log(highScore + " high score object")
 // console.log(answerarrayq);
@@ -109,6 +110,7 @@ var answerarrayqLength = answerarrayq.length;
 // console.log(answerarrayq.numberOfQuestion.answers.length);
 startQuizElement.addEventListener("click", function () {
     beginQuiz();
+
     highScoresPage.hidden = true;
     document.querySelector("#start-btn").hidden = true;
     document.querySelector(".questions").hidden = false;
@@ -116,6 +118,7 @@ startQuizElement.addEventListener("click", function () {
     gobackbt.hidden = true;
     // startQuiz();
     time();
+
     var numberOfQuestion = question();
     console.log(numberOfQuestion + "number of quest");
     // return whichNumberOfQuestion
@@ -164,6 +167,7 @@ answerElement3.addEventListener("click", function () {
     question();
 });
 submitFormHighScoreBtn.addEventListener("click", function () {
+    winOrDie();
     highScores();
 
 });
@@ -180,7 +184,7 @@ function checkIfTrue() {
         score++
         console.log(score);
         numberOfQuestion++;
-        console.log(score + " score is");
+        wrongOrWriteDisplay.style.color = "Green";
         wrongOrWriteDisplay.textContent = "Enemy Damaged"
         document.querySelector(".right-or-wrong-msg").hidden = false;
     }
@@ -188,17 +192,23 @@ function checkIfTrue() {
         stabWoundSound();
         console.log(score);
         numberOfQuestion++;
-        console.log(score + " score is");
+        wrongOrWriteDisplay.style.color = "Red";
         wrongOrWriteDisplay.textContent = "Wounded - 10 sec!!";
         document.querySelector(".right-or-wrong-msg").hidden = false;
+
         timer -= 10;
     }
     answerarrayqLength--;
 }
 function time() {
+
     var timerInterval = setInterval(function () {
         timer--;
         timeElement.textContent = timer;
+        if (timer <= 20) {
+            timeElement.style.color = "Red";
+        }
+        endSongPause();
         if (timer <= 0 || answerarrayqLength <= 0) {
             clearInterval(timerInterval);
             gameOver();
@@ -213,9 +223,7 @@ function gameOver() {
     timeElement.textContent = "";
     questionContainerElement.hidden = true;
     question1Element.textContent = "Game Over";
-    // if (score < 0) {
-    //     score = 0;
-    // }
+    endSong();
     finalScoreIs.textContent = "Your final score is " + score;
     submitForm.hidden = false;
 
@@ -242,6 +250,7 @@ function saveHighScores() {
 function displayHighScoresOutput() {
     var highScoresPage = document.querySelector(".displayParaHighScore");
     console.log(scores);
+
     scores.sort(function (b, a) {
         return a.score - b.score
     })
@@ -251,9 +260,9 @@ function displayHighScoresOutput() {
         var locname = scores[i].name;
         console.log(locname);
         var locscore = scores[i].score;
-        console.log(locscore);
-        console.log(locname + " Score: " + locscore);
-        var p2 = ("<p>" + " Score: " + locscore + " " + locname + "</p>");
+        // console.log(locscore);
+        // console.log(locname + " Score: " + locscore);
+        var p2 = ("<p>" + locscore + " : " + locname + "</p>");
         document.querySelector(".displayParaHighScore").insertAdjacentHTML('beforebegin', p2);
     }
     gobackbt.hidden = false;
@@ -269,6 +278,7 @@ function showHighScore() {
     displayHighScoresOutput();
     highScoresPage.hidden = false;
     gobackbt.hidden = true;
+
 }
 
 function playGotTheme() {
@@ -283,7 +293,7 @@ function stabWoundSound() {
     stabwoundaudio.play();
 }
 function drumSuccessSound() {
-    var drumSuccessAudio = new Audio("sound/drumbs.mp3");
+    var drumSuccessAudio = new Audio("sound/kingofnorth.mp3");
     drumSuccessAudio.volume = .2;
     drumSuccessAudio.play();
 }
@@ -298,3 +308,18 @@ function stopThemeSOng() {
     audio.pause();
 }
 
+function endSong() {
+    var endSong = new Audio("sound/nightking.mp3");
+    endSong.volume = .2;
+    endSong.play();
+}
+
+function endSongPause() {
+    var endSong = new Audio("sound/nightking.mp3");
+    endSong.pause();
+}
+function winOrDie() {
+    var winOrDie = new Audio("sound/winorDie.mp3");
+    winOrDie.volume = .2;
+    winOrDie.play();
+}

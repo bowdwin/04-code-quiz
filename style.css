@@ -23,7 +23,8 @@
 
 .dark-box {
  border: solid white 3px;
- background-color: rgb(20, 30, 46);
+ /* background-color: rgb(20, 30, 46); */
+ background-color: rgb(1, 19, 26);
  padding: 20px;
 }
 
@@ -38,3 +39,7 @@
 .add-word-spacing {
   word-spacing: 5px;
 }
+ .btn-color-black {
+   background-color: black;
+   border: solid 1px white;
+ }
