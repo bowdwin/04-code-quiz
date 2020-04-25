@@ -32,8 +32,8 @@ submitForm.hidden = true;
 document.querySelector(".questions").hidden = true;
 document.querySelector(".right-or-wrong-msg").hidden = true;
 var timer = 60;
-// var personObj = new personHighScoreObj("user", "score");
-// console.log(personObj + " this is person object");
+
+// array that stores all the questions
 var answerarrayq = [
     {
         question: "Ned Stark had a sister who was abducted by the mad king. what was her name?",
@@ -47,36 +47,36 @@ var answerarrayq = [
     {
         question: "What is the name of arya's direwolf",
         answers: [
-            { text: "grey wind", iscorrect: false },
-            { text: "nightfall", iscorrect: false },
+            { text: "grey Wind", iscorrect: false },
+            { text: "nightFall", iscorrect: false },
             { text: "nymeria", iscorrect: true },
-            { text: "lady", iscorrect: false }
+            { text: "laDy", iscorrect: false }
         ]
     },
     {
         question: "What is ser davos's nickname? ",
         answers: [
-            { text: "the onion knight", iscorrect: true },
-            { text: "blackfish", iscorrect: false },
-            { text: "little finger", iscorrect: false },
-            { text: "halfblood", iscorrect: false }
+            { text: "the Onion knight", iscorrect: true },
+            { text: "blAckfish", iscorrect: false },
+            { text: "little Finger", iscorrect: false },
+            { text: "halfblOod", iscorrect: false }
         ]
     },
     {
         question: "Who created the plot to kill king joffery?",
         answers: [
-            { text: "littlefinger", iscorrect: false },
+            { text: "little finger", iscorrect: false },
             { text: "tyrion", iscorrect: false },
-            { text: "sansa", iscorrect: false },
-            { text: "maergery", iscorrect: true }
+            { text: "saNsa", iscorrect: false },
+            { text: "maergeRy", iscorrect: true }
         ]
     },
     {
         question: "Wilfire is incredibly explosive, what substance can extinguish it?",
         answers: [
-            { text: "snow", iscorrect: false },
+            { text: "snOw", iscorrect: false },
             { text: "sand", iscorrect: true },
-            { text: "dragon's blood", iscorrect: false },
+            { text: "dragoOn's blood", iscorrect: false },
             { text: "ice", iscorrect: false }
         ]
     },
@@ -101,7 +101,6 @@ var answerarrayq = [
 ]
 var answerarrayqLength = answerarrayq.length;
 
-// var highScore = new Object(name, score);
 // console.log(highScore + " high score object")
 // console.log(answerarrayq);
 // console.log(answerarrayq1.answers[1]);
@@ -110,13 +109,11 @@ var answerarrayqLength = answerarrayq.length;
 // console.log(answerarrayq.numberOfQuestion.answers.length);
 startQuizElement.addEventListener("click", function () {
     beginQuiz();
-
     highScoresPage.hidden = true;
     document.querySelector("#start-btn").hidden = true;
     document.querySelector(".questions").hidden = false;
     document.querySelector(".title").hidden = true;
     gobackbt.hidden = true;
-    // startQuiz();
     time();
 
     var numberOfQuestion = question();
@@ -127,7 +124,7 @@ startQuizElement.addEventListener("click", function () {
 function question() {
     setTimeout(function () {
         document.querySelector(".right-or-wrong-msg").hidden = true;
-    }, 2000);
+    }, 3000);
 
     console.log(numberOfQuestion + "number of question");
     console.log(answerarrayq[numberOfQuestion].question);
@@ -240,17 +237,13 @@ function highScores() {
 function saveHighScores() {
 
     var names = document.querySelector("#enterName");
-
     scores.push({ name: names.value, score: score });
-    console.log(scores + " Scores adrer push")
     var scoresStringed = JSON.stringify(scores);
     localStorage.setItem("item", scoresStringed);
 }
 
 function displayHighScoresOutput() {
     var highScoresPage = document.querySelector(".displayParaHighScore");
-    console.log(scores);
-
     scores.sort(function (b, a) {
         return a.score - b.score
     })

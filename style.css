@@ -24,8 +24,10 @@
 .dark-box {
  border: solid white 3px;
  /* background-color: rgb(20, 30, 46); */
- background-color: rgb(1, 19, 26);
+ background-color: rgb(6, 24, 31);
  padding: 20px;
+ align-items: center;
+ justify-content: center;
 }
 
 
@@ -40,6 +42,15 @@
   word-spacing: 5px;
 }
  .btn-color-black {
-   background-color: black;
-   border: solid 1px white;
+   background-color: black !important;
+   border: solid 1px white !important;
+   color: white !important;
+   -webkit-box-shadow: none !important;
+   box-shadow: none !important;
+
+ }
+ .align-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
  }
