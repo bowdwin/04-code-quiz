@@ -107,6 +107,8 @@ var answerarrayqLength = answerarrayq.length;
 // console.log(answerarrayq[0].answers[0].text)
 // console.log(answerarrayq[0].answers[0].iscorrect)
 // console.log(answerarrayq.numberOfQuestion.answers.length);
+
+//begins the quiz
 startQuizElement.addEventListener("click", function () {
     beginQuiz();
     highScoresPage.hidden = true;
@@ -121,6 +123,7 @@ startQuizElement.addEventListener("click", function () {
     // return whichNumberOfQuestion
 });
 
+//displays question
 function question() {
     setTimeout(function () {
         document.querySelector(".right-or-wrong-msg").hidden = true;
@@ -138,8 +141,6 @@ function question() {
     return numberOfQuestion;
 }
 
-
-// console.log(HTMLElementObject.click());
 answerElement0.addEventListener("click", function () {
     answerElementPicked = 0;
     checkIfTrue();
@@ -210,7 +211,6 @@ function time() {
             clearInterval(timerInterval);
             gameOver();
             stopThemeSOng();
-            // alert("time is up");
         }
     }, 1000);
 }
@@ -282,17 +282,17 @@ function playGotTheme() {
 
 function stabWoundSound() {
     var stabwoundaudio = new Audio("sound/stab.mp3");
-    stabwoundaudio.volume = .2;
+    stabwoundaudio.volume = .5;
     stabwoundaudio.play();
 }
 function drumSuccessSound() {
     var drumSuccessAudio = new Audio("sound/kingofnorth.mp3");
-    drumSuccessAudio.volume = .2;
+    drumSuccessAudio.volume = .5;
     drumSuccessAudio.play();
 }
 function beginQuiz() {
     var beingSound = new Audio("sound/isthisyourcommand.mp3");
-    beingSound.volume = .2;
+    beingSound.volume = .5;
     beingSound.play();
 }
 
@@ -303,7 +303,7 @@ function stopThemeSOng() {
 
 function endSong() {
     var endSong = new Audio("sound/nightking.mp3");
-    endSong.volume = .2;
+    endSong.volume = .5;
     endSong.play();
 }
 
@@ -313,6 +313,6 @@ function endSongPause() {
 }
 function winOrDie() {
     var winOrDie = new Audio("sound/winorDie.mp3");
-    winOrDie.volume = .2;
+    winOrDie.volume = .4;
     winOrDie.play();
 }
