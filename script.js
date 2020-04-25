@@ -35,7 +35,7 @@ var timer = 60;
 // console.log(personObj + " this is person object");
 var answerarrayq = [
     {
-        question: "Ned Stark had a sister who was abducted by the mad king. What was her name?",
+        question: "Ned stark had a sister who was abducted by the mad king. what was her name?",
         answers: [
             { text: "Lysa", iscorrect: false },
             { text: "Lorena", iscorrect: false },
@@ -44,52 +44,52 @@ var answerarrayq = [
         ]
     },
     {
-        question: "What is the name of Arya's Direwolf",
+        question: "What is the name of arya's direwolf",
         answers: [
-            { text: "Grey Wind", iscorrect: false },
-            { text: "Nightfall", iscorrect: false },
-            { text: "Nymeria", iscorrect: true },
-            { text: "Lady", iscorrect: false }
+            { text: "grey wind", iscorrect: false },
+            { text: "nightfall", iscorrect: false },
+            { text: "nymeria", iscorrect: true },
+            { text: "lady", iscorrect: false }
         ]
     },
     {
-        question: "What is Ser Davos's nickname? ",
+        question: "What is ser davos's nickname? ",
         answers: [
-            { text: "The Onion Knight", iscorrect: true },
-            { text: "Blackfish", iscorrect: false },
-            { text: "Little Figer", iscorrect: false },
-            { text: "Halfblood", iscorrect: false }
+            { text: "the onion knight", iscorrect: true },
+            { text: "blackfish", iscorrect: false },
+            { text: "little finger", iscorrect: false },
+            { text: "halfblood", iscorrect: false }
         ]
     },
     {
-        question: "Who Created the plot to kill king Joffery?",
+        question: "Who created the plot to kill king joffery?",
         answers: [
-            { text: "Littlefinger", iscorrect: false },
+            { text: "littlefinger", iscorrect: false },
             { text: "tyrion", iscorrect: false },
-            { text: "Sansa", iscorrect: false },
-            { text: "Maergery", iscorrect: true }
+            { text: "sansa", iscorrect: false },
+            { text: "maergery", iscorrect: true }
         ]
     },
     {
         question: "Wilfire is incredibly explosive, what substance can extinguish it?",
         answers: [
-            { text: "Snow", iscorrect: false },
-            { text: "Sand", iscorrect: true },
-            { text: "Dragon's Blood", iscorrect: false },
-            { text: "Ice", iscorrect: false }
+            { text: "snow", iscorrect: false },
+            { text: "sand", iscorrect: true },
+            { text: "dragon's blood", iscorrect: false },
+            { text: "ice", iscorrect: false }
         ]
     },
     {
         question: "What two substances can kill white walkers?",
         answers: [
-            { text: "Dragon Breath and Wildfire", iscorrect: false },
-            { text: "Valyrian Steel and Dragonglass", iscorrect: true },
-            { text: "Valyrian Steel and dragon breath", iscorrect: false },
-            { text: "Wilfire and Dragonglass", iscorrect: false }
+            { text: "dragon breath and Wwldfire", iscorrect: false },
+            { text: "valyrian steel and dragonglass", iscorrect: true },
+            { text: "valyrian steel and dragon breath", iscorrect: false },
+            { text: "wildfire and dragonglass", iscorrect: false }
         ]
     },
     {
-        question: "Who created the Nightking",
+        question: "Who created the nightking",
         answers: [
             { text: "The Wildings", iscorrect: false },
             { text: "The Children of the Forest", iscorrect: true },
@@ -202,6 +202,7 @@ function time() {
         if (timer <= 0 || answerarrayqLength <= 0) {
             clearInterval(timerInterval);
             gameOver();
+            stopThemeSOng();
             // alert("time is up");
         }
     }, 1000);
@@ -290,5 +291,10 @@ function beginQuiz() {
     var beingSound = new Audio("sound/isthisyourcommand.mp3");
     beingSound.volume = .2;
     beingSound.play();
+}
+
+function stopThemeSOng() {
+    var audio = document.getElementById("audio");
+    audio.pause();
 }
 
