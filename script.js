@@ -45,6 +45,24 @@ var answerarrayq = [
         ]
     },
     {
+        question: "who Was the first character to be called King of the North?",
+        answers: [
+            { text: "jon Snow", iscorrect: false },
+            { text: "rOb Stark", iscorrect: true },
+            { text: "neD stArk", iscorrect: false },
+            { text: "edmure tulLy", iscorrect: false }
+        ]
+    },
+    {
+        question: "What is jOn Snow's reAl nAme?",
+        answers: [
+            { text: "joN", iscorrect: false },
+            { text: "Aerys", iscorrect: false },
+            { text: "aEgon", iscorrect: true },
+            { text: "rhaeGar", iscorrect: false }
+        ]
+    },
+    {
         question: "What is the name of arya's direwolf?",
         answers: [
             { text: "grey Wind", iscorrect: false },
@@ -72,7 +90,7 @@ var answerarrayq = [
         ]
     },
     {
-        question: "What substance can extinguish it?",
+        question: "What substance can extinguish WildFire?",
         answers: [
             { text: "snOw", iscorrect: false },
             { text: "sand", iscorrect: true },
@@ -87,6 +105,15 @@ var answerarrayq = [
             { text: "lightBringer", iscorrect: false },
             { text: "heartsBane", iscorrect: false },
             { text: "longClaw", iscorrect: true }
+        ]
+    },
+    {
+        question: "whIch dRagon waS the largeSt Dragon?",
+        answers: [
+            { text: "viSerion", iscorrect: false },
+            { text: "rHaegal", iscorrect: false },
+            { text: "bAlerion", iscorrect: true },
+            { text: "droGon", iscorrect: false }
         ]
     },
     {
@@ -194,7 +221,7 @@ function checkIfTrue() {
         wrongOrWriteDisplay.textContent = "WoundEd - 10 sEc!!";
         document.querySelector(".right-or-wrong-msg").hidden = false;
 
-        timer -= 10;
+        timer -= 7;
     }
     answerarrayqLength--;
 }

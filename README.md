@@ -13,8 +13,8 @@ Site link https://bowdwin.github.io/04-code-quiz/
         * GOT theme starts playing a 60 second timer is displayed and starts counting down to 0.  
         * Once the timer reaches 20 seconds the font color changes to red. 
         * If the answer is correct, a "King of the north" sound clip is played and green text of "Enemy Damaged" is displayed green for 3 seconds then dissapears.
-        * If the answers is wrong - 10 seconds is deducted from the timer, a sound clip of a sword flesh wound is played as well as "wounded -10 seconds" is displayed in red.
-        * If the timer reaches 0 or all 7 questions are answered the game ends.
+        * If the answers is wrong - 7 seconds is deducted from the timer, a sound clip of a sword flesh wound is played as well as "wounded -10 seconds" is displayed in red.
+        * If the timer reaches 0 or all 10 questions are answered the game ends.
         * When the game ends, GOT theme stops and the Night King Song is played 
         * The user is presented with a submit enter name box.
         * When the name is entered and the submit button is clicked, the name get's stored in local storage and a sound clip is played "In the GOT you either win or you die"
