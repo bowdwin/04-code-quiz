@@ -38,7 +38,7 @@ startOverBtn.hidden = true;
 clearHighScoresClass.hidden = true;
 document.querySelector(".questions").hidden = true;
 document.querySelector(".right-or-wrong-msg").hidden = true;
-var timer = 60;
+var timer = 5;
 highScoresPage2.hidden = true;
 // array that stores all the questions
 var answerarrayq = [
@@ -272,16 +272,19 @@ function highScores() {
     saveHighScores();
     console.log(originalContent);
     originalContent.hidden = true;
-    highScoresPage.hidden = false;
     displayHighScoresOutput();
+    highScoresPage.hidden = false;
 
 }
 
 function highScoresEndGame() {
     saveHighScores();
     originalContent.hidden = true;
-    highScoresPage2.hidden = false;
+
     displayHighScoresOutput();
+    clearHighScoresClass.hidden = false;
+
+    highScoresPage.hidden = false;
 }
 
 function saveHighScores() {
@@ -311,8 +314,8 @@ function displayHighScoresOutput() {
             document.querySelector(".displayParaHighScore").insertAdjacentHTML('beforebegin', p2);
         }
         else {
-            var p2 = ("<p>" + locscore + " : " + locname + "</p>");
-            document.querySelector(".displayParaHighScore2").insertAdjacentHTML('beforebegin', p2);
+            var p3 = ("<p>" + locscore + " : " + locname + "</p>");
+            document.querySelector(".displayParaHighScore2").insertAdjacentHTML('beforebegin', p3);
         }
 
     }
