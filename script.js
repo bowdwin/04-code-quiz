@@ -282,17 +282,17 @@ function playGotTheme() {
 
 function stabWoundSound() {
     var stabwoundaudio = new Audio("sound/stab.mp3");
-    stabwoundaudio.volume = .4;
+    stabwoundaudio.volume = .7;
     stabwoundaudio.play();
 }
 function drumSuccessSound() {
     var drumSuccessAudio = new Audio("sound/kingofnorth.mp3");
-    drumSuccessAudio.volume = .4;
+    drumSuccessAudio.volume = .7;
     drumSuccessAudio.play();
 }
 function beginQuiz() {
     var beingSound = new Audio("sound/isthisyourcommand.mp3");
-    beingSound.volume = .4;
+    beingSound.volume = .7;
     beingSound.play();
 }
 
@@ -303,7 +303,7 @@ function stopThemeSOng() {
 
 function endSong() {
     var endSong = new Audio("sound/nightking.mp3");
-    // endSong.volume = .5;
+    endSong.volume = .7;
     endSong.play();
 }
 
@@ -313,6 +313,6 @@ function endSongPause() {
 }
 function winOrDie() {
     var winOrDie = new Audio("sound/winorDie.mp3");
-    winOrDie.volume = .4;
+    winOrDie.volume = .7;
     winOrDie.play();
 }
