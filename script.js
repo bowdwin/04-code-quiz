@@ -1,8 +1,10 @@
 var scores = JSON.parse(localStorage.getItem("item"));
+varHighScoresClick = false;
 if (scores === null) {
     var scores = [
     ]
 }
+varHighScoresClick = false;
 
 var startQuizElement = document.querySelector("#start-btn");
 var timeElement = document.querySelector(".time");
@@ -16,12 +18,14 @@ var submitForm = document.querySelector(".submit");
 var originalContent = document.querySelector(".original");
 var submitFormHighScoreBtn = document.querySelector("#submitHighScrBtn");
 var highScoresPage = document.querySelector("#highscores");
+var highScoresPage2 = document.querySelector("#highscores2");
 var clearHighScoresbtn = document.querySelector("#clearHighScoresbtn");
+var clearHighScoresClass = document.querySelector(".clearHighScores");
 var hideScorePara = document.querySelector(".hideScorePara");
 var viewHighScoresbtn = document.querySelector("#viewHighScoresbtn");
 var gobackbt = document.querySelector("#goBack");
 var answerElement = document.querySelector(".btn");
-
+var startOverBtn = document.querySelector("#startOverBtn");
 var numberOfQuestion = 0;
 var score = 0;
 var answerElementPicked = 0;
@@ -29,10 +33,13 @@ var question1Element = document.querySelector(".question-one");
 var wrongOrWriteDisplay = document.querySelector(".right-or-wrong-msg");
 highScoresPage.hidden = true;
 submitForm.hidden = true;
+startOverBtn.hidden = true;
+
+clearHighScoresClass.hidden = true;
 document.querySelector(".questions").hidden = true;
 document.querySelector(".right-or-wrong-msg").hidden = true;
-var timer = 60;
-
+var timer = 5;
+highScoresPage2.hidden = true;
 // array that stores all the questions
 var answerarrayq = [
     {
@@ -137,12 +144,15 @@ var answerarrayqLength = answerarrayq.length;
 
 //begins the quiz
 startQuizElement.addEventListener("click", function () {
+    clearHighScoresClass.hidden = true;
     beginQuiz();
     highScoresPage.hidden = true;
     document.querySelector("#start-btn").hidden = true;
     document.querySelector(".questions").hidden = false;
     document.querySelector(".title").hidden = true;
     gobackbt.hidden = true;
+    startOverBtn.hidden = true;
+
     time();
 
     var numberOfQuestion = question();
@@ -193,14 +203,20 @@ answerElement3.addEventListener("click", function () {
 });
 submitFormHighScoreBtn.addEventListener("click", function () {
     winOrDie();
-    highScores();
+    highScoresEndGame();
+    startOverBtn.hidden = false;
+    clearHighScoresClass.hidden = false;
+
 
 });
 clearHighScoresbtn.addEventListener("click", function () {
     clearHighScores();
 });
 viewHighScoresbtn.addEventListener("click", function () {
+    viewHighScoresbtn.hidden = true;
     showHighScore();
+    // clearHighScoresbtn = true;
+    // varHighScoresClick = true;
 });
 function checkIfTrue() {
     console.log(answerarrayq[numberOfQuestion].answers[answerElementPicked].iscorrect);
@@ -220,7 +236,6 @@ function checkIfTrue() {
         wrongOrWriteDisplay.style.color = "Red";
         wrongOrWriteDisplay.textContent = "WoundEd -7 sEc!!";
         document.querySelector(".right-or-wrong-msg").hidden = false;
-
         timer -= 7;
     }
     answerarrayqLength--;
@@ -237,13 +252,13 @@ function time() {
         if (timer <= 0 || answerarrayqLength <= 0) {
             clearInterval(timerInterval);
             gameOver();
-            stopThemeSOng();
         }
     }, 1000);
 }
 
 
 function gameOver() {
+    stopThemeSOng();
     timeElement.textContent = "";
     questionContainerElement.hidden = true;
     question1Element.textContent = "Game Over";
@@ -252,12 +267,20 @@ function gameOver() {
     submitForm.hidden = false;
 
 }
-
+var highScoreCounter = 0;
 function highScores() {
     saveHighScores();
     console.log(originalContent);
     originalContent.hidden = true;
     highScoresPage.hidden = false;
+    displayHighScoresOutput();
+
+}
+
+function highScoresEndGame() {
+    saveHighScores();
+    originalContent.hidden = true;
+    highScoresPage2.hidden = false;
     displayHighScoresOutput();
 }
 
@@ -270,7 +293,8 @@ function saveHighScores() {
 }
 
 function displayHighScoresOutput() {
-    var highScoresPage = document.querySelector(".displayParaHighScore");
+    // var highScoresPage = document.querySelector(".displayParaHighScore");
+    highScoreCounter++;
     scores.sort(function (b, a) {
         return a.score - b.score
     })
@@ -282,8 +306,15 @@ function displayHighScoresOutput() {
         var locscore = scores[i].score;
         // console.log(locscore);
         // console.log(locname + " Score: " + locscore);
-        var p2 = ("<p>" + locscore + " : " + locname + "</p>");
-        document.querySelector(".displayParaHighScore").insertAdjacentHTML('beforebegin', p2);
+        if (highScoreCounter <= 1) {
+            var p2 = ("<p>" + locscore + " : " + locname + "</p>");
+            document.querySelector(".displayParaHighScore").insertAdjacentHTML('beforebegin', p2);
+        }
+        else {
+            var p2 = ("<p>" + locscore + " : " + locname + "</p>");
+            document.querySelector(".displayParaHighScore2").insertAdjacentHTML('beforebegin', p2);
+        }
+
     }
     gobackbt.hidden = false;
     // highScoresPage.textContent = user;å
@@ -295,11 +326,15 @@ function clearHighScores() {
     // highScores();
 }
 function showHighScore() {
+    varHighScoresClick = true;
+    clearHighScoresClass.hidden = false;
     displayHighScoresOutput();
     highScoresPage.hidden = false;
     gobackbt.hidden = true;
 
 }
+
+
 
 function playGotTheme() {
     var audio = document.getElementById("audio");
