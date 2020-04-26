@@ -218,7 +218,7 @@ function checkIfTrue() {
         console.log(score);
         numberOfQuestion++;
         wrongOrWriteDisplay.style.color = "Red";
-        wrongOrWriteDisplay.textContent = "WoundEd - 10 sEc!!";
+        wrongOrWriteDisplay.textContent = "WoundEd -7 sEc!!";
         document.querySelector(".right-or-wrong-msg").hidden = false;
 
         timer -= 7;
