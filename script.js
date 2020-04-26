@@ -38,7 +38,7 @@ startOverBtn.hidden = true;
 clearHighScoresClass.hidden = true;
 document.querySelector(".questions").hidden = true;
 document.querySelector(".right-or-wrong-msg").hidden = true;
-var timer = 5;
+var timer = 60;
 highScoresPage2.hidden = true;
 // array that stores all the questions
 var answerarrayq = [
