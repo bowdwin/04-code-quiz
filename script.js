@@ -240,6 +240,8 @@ function checkIfTrue() {
     }
     answerarrayqLength--;
 }
+
+//fucntion that holds the initial timer
 function time() {
 
     var timerInterval = setInterval(function () {
@@ -256,7 +258,7 @@ function time() {
     }, 1000);
 }
 
-
+//game over function that is called
 function gameOver() {
     stopThemeSOng();
     timeElement.textContent = "";
@@ -267,6 +269,7 @@ function gameOver() {
     submitForm.hidden = false;
 
 }
+//displays high scores at beginning of game
 var highScoreCounter = 0;
 function highScores() {
     saveHighScores();
@@ -277,6 +280,7 @@ function highScores() {
 
 }
 
+//displays high scores at end game
 function highScoresEndGame() {
     saveHighScores();
     originalContent.hidden = true;
@@ -287,14 +291,15 @@ function highScoresEndGame() {
     highScoresPage.hidden = false;
 }
 
+//saves high scores
 function saveHighScores() {
-
     var names = document.querySelector("#enterName");
     scores.push({ name: names.value, score: score });
     var scoresStringed = JSON.stringify(scores);
     localStorage.setItem("item", scoresStringed);
 }
 
+//displays the high scores called twice, at start if high scores is clicked and end game
 function displayHighScoresOutput() {
     // var highScoresPage = document.querySelector(".displayParaHighScore");
     highScoreCounter++;
@@ -323,11 +328,14 @@ function displayHighScoresOutput() {
     // highScoresPage.textContent = user;å
     // console.log(user + " this is the user entered and pulled");
 }
+//reloads the page 
 function clearHighScores() {
     localStorage.clear();
     location.reload();
     // highScores();
 }
+
+//shows high html or hides it
 function showHighScore() {
     varHighScoresClick = true;
     clearHighScoresClass.hidden = false;
@@ -337,45 +345,48 @@ function showHighScore() {
 
 }
 
-
-
+//GOT theme song
 function playGotTheme() {
     var audio = document.getElementById("audio");
     // audio.volume = 0.05;
     audio.play();
 }
 
+//-7 sec deduction sound
 function stabWoundSound() {
     var stabwoundaudio = new Audio("sound/stab.mp3");
     stabwoundaudio.volume = .7;
     stabwoundaudio.play();
 }
+//king of the nor sound if correct answer
 function drumSuccessSound() {
     var drumSuccessAudio = new Audio("sound/kingofnorth.mp3");
     drumSuccessAudio.volume = .7;
     drumSuccessAudio.play();
 }
+//plays got theme song
 function beginQuiz() {
     var beingSound = new Audio("sound/isthisyourcommand.mp3");
     beingSound.volume = .7;
     beingSound.play();
 }
-
+//stops got theme song
 function stopThemeSOng() {
     var audio = document.getElementById("audio");
     audio.pause();
 }
-
+//plays night king song at end of game
 function endSong() {
     var endSong = new Audio("sound/nightking.mp3");
     endSong.volume = .7;
     endSong.play();
 }
-
+//pauts got theme sonng when game ends
 function endSongPause() {
     var endSong = new Audio("sound/nightking.mp3");
     endSong.pause();
 }
+//function called when submit button is hit to play some words
 function winOrDie() {
     var winOrDie = new Audio("sound/winorDie.mp3");
     winOrDie.volume = .7;
